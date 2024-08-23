@@ -14,8 +14,20 @@ import history from '../assets/hist.png';
 import medcin from '../assets/med.png';
 import technology from '../assets/texh.png';
 import agriculture from '../assets/agri.png';
+import NavigateWrapper from "./navigatewrapper";
+import {Link} from "react-router-dom";
 
 class Dashbord extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state={
+        };
+    }
+    displayTopics=e=>{
+        this.props.navigate('/search');
+    }
     render() {
         return (
             <div className="  flex flex-col  ">
@@ -27,12 +39,12 @@ class Dashbord extends Component {
                         <div className="pt-10">
                             <h1 className="text-xl font-bold text-[#696F79]">Yassin Faouar</h1>
                             <p className=" text-[#696F79]">Bonus booster 24lv</p>
-                            <div className="w-full h-4 border-2 rounded-xl">
-                                <div className=" h-full bg-[#C4C4C4] rounded-xl" style={{width:'50%'}}></div>
+                            <div className="w-full h-3 border-2 rounded-xl mt-4">
+                                <div className=" h-full bg-[#C4C4C4] rounded-xl " style={{width: '70%'}}></div>
                             </div>
                             <div className="flex justify-between mt-6  mr-24 ">
                                 <div className="flex p-3 ">
-                                    <img src={flag} className="p-3"  alt={"flag"}/>
+                                    <img src={flag} className="p-3" alt={"flag"}/>
                                     <div className="p-2">
                                         <p className="font-bold text-[#696F79]">27</p>
                                         <p className=" text-[#696F79]">Quiz Passed</p>
@@ -57,36 +69,44 @@ class Dashbord extends Component {
                     </div>
                     <div className="flex justify-around">
                         <div className="w-1/3 ">
-                        <h1 className="text-[#696F79] font-bold">Achievements</h1>
+                            <div className="flex justify-around">
+                                <h1 className="text-[#696F79] font-bold">Achievements</h1>
+                                <div className="w-1/2 h-3 border-2 rounded-xl mt-2 ml-2  ">
+                                    <div className="h-full bg-[#C4C4C4] rounded-xl" style={{width: '50%'}}></div>
+                                </div>
+                            </div>
                             <div className="rounded-2xl shadow-md mb-5 pb-3">
                                 <div className=" flex justify-between mt-2 p-3">
                                     <div>
                                         <img src={back} alt={"badge"} className=""/>
-                                        <p className="text-center">ComeBack</p>
+                                        <p className="text-center text-[#696F79]">ComeBack</p>
                                     </div>
                                     <div>
                                         <img src={win} alt={"badge"} className=""/>
-                                        <p className="text-center">winner</p>
+                                        <p className="text-center text-[#696F79]">winner</p>
                                     </div>
                                 </div>
                                 <div className="flex justify-center">
                                     <div>
                                         <img src={luck} alt={"badge"} className=""/>
-                                        <p className="text-center">lucky</p>
+                                        <p className="text-center text-[#696F79]">lucky</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className=" w-1/3 ">
-                            <h1 className="text-[#696F79] font-bold">Featured Category</h1>
+                            <div className="flex justify-between">
+                                <h1 className="text-[#696F79] font-bold">Featured Category</h1>
+                                <Link to="/topics" className="text-[#696F79]">View All</Link>
+                            </div>
                             <div className=" w-full">
                                 <div className=" flex ">
-                                    <img src={history} className="w-1/2" style={{width:'60%'}} alt={"rectangle"}/>
-                                    <img src={medcin} className="w-1/2" style={{width:'60%'}} alt={"rectangle"}/>
+                                    <img src={history} className="w-1/2" style={{width: '60%'}} alt={"rectangle"}/>
+                                    <img src={medcin} className="w-1/2" style={{width: '60%'}} alt={"rectangle"}/>
                                 </div>
                                 <div className=" flex">
-                                    <img src={technology} className="w-1/2"  style={{width:'60%'}} alt={"rectangle"}/>
-                                    <img src={agriculture} className="w-1/2" style={{width:'60%'}} alt={"rectangle"}/>
+                                    <img src={technology} className="w-1/2" style={{width: '60%'}} alt={"rectangle"}/>
+                                    <img src={agriculture} className="w-1/2" style={{width: '60%'}} alt={"rectangle"}/>
                                 </div>
                             </div>
                         </div>
@@ -97,4 +117,4 @@ class Dashbord extends Component {
     }
 }
 
-export default Dashbord;
+export default NavigateWrapper(Dashbord);
