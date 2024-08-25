@@ -25,7 +25,6 @@ class LoginForm extends Component {
         return Object.keys(errors).length === 0 ? null : errors;
     }
     handleLogin = e => {
-
         e.preventDefault();
         const errors = this.validate();
         this.setState({errors: errors || {}});

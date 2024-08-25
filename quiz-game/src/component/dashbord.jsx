@@ -10,10 +10,10 @@ import back from '../assets/Badge.png';
 import win from '../assets/win.png';
 import luck from '../assets/luck.png';
 
-import history from '../assets/hist.png';
-import medcin from '../assets/med.png';
-import technology from '../assets/texh.png';
-import agriculture from '../assets/agri.png';
+import history from '../assets/hist.jpg';
+import medcin from '../assets/med.jpg';
+import technology from '../assets/tech.jpg';
+import agriculture from '../assets/agri.jpg';
 import NavigateWrapper from "./navigatewrapper";
 import {Link} from "react-router-dom";
 
@@ -22,10 +22,10 @@ class Dashbord extends Component {
     constructor(props) {
         super(props);
 
-        this.state={
-        };
+        this.state = {};
     }
-    displayTopics=e=>{
+
+    displayTopics = e => {
         this.props.navigate('/search');
     }
     render() {
@@ -72,7 +72,7 @@ class Dashbord extends Component {
                             <div className="flex justify-around">
                                 <h1 className="text-[#696F79] font-bold">Achievements</h1>
                                 <div className="w-1/2 h-3 border-2 rounded-xl mt-2 ml-2  ">
-                                    <div className="h-full bg-[#C4C4C4] rounded-xl" style={{width: '50%'}}></div>
+                                    <div className="h-full bg-[#C4C4C4] rounded-xl" style={{width: '70%'}}></div>
                                 </div>
                             </div>
                             <div className="rounded-2xl shadow-md mb-5 pb-3">
@@ -95,18 +95,22 @@ class Dashbord extends Component {
                             </div>
                         </div>
                         <div className=" w-1/3 ">
-                            <div className="flex justify-between">
-                                <h1 className="text-[#696F79] font-bold">Featured Category</h1>
+                            <div className="flex justify-between ">
+                                <h1 className="text-[#696F79] font-bold pl-7">Featured Category</h1>
                                 <Link to="/topics" className="text-[#696F79]">View All</Link>
                             </div>
-                            <div className=" w-full">
-                                <div className=" flex ">
-                                    <img src={history} className="w-1/2" style={{width: '60%'}} alt={"rectangle"}/>
+                            <div className=" ">
+                                <div className="flex">
+                                    <img src={history} className="w-1/2 " style={{width: '60%'}} alt={"rectangle"}/>
+                                    <p className="text-white  font-bold absolute top-[60%] left-[62%]">History</p>
                                     <img src={medcin} className="w-1/2" style={{width: '60%'}} alt={"rectangle"}/>
+                                    <p className="text-white  font-bold absolute top-[60%] left-[82%]">Medcine</p>
                                 </div>
-                                <div className=" flex">
+                                <div className="flex">
                                     <img src={technology} className="w-1/2" style={{width: '60%'}} alt={"rectangle"}/>
+                                    <p className="text-white font-bold absolute top-[88%] left-[62%]">Technology</p>
                                     <img src={agriculture} className="w-1/2" style={{width: '60%'}} alt={"rectangle"}/>
+                                    <p className="text-white font-bold absolute top-[88%] left-[82%] ">Agriculture</p>
                                 </div>
                             </div>
                         </div>

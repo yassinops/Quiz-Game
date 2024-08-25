@@ -5,6 +5,7 @@ import Dashbord from "./component/dashbord";
 import Searchbar from "./component/searchbar";
 import Navbar from "./component/navbar";
 import Topics from "./component/topics";
+import Questions from "./component/questions";
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
             <Route path="topics" element={<Topics/>}/>
             <Route path="/search" element={<Searchbar/>}/>
             <Route path="/navbar" element={<Navbar/>}/>
+            <Route path="/questions" element={<Questions/>}/>
         </Routes>
     );
 }
