@@ -18,7 +18,7 @@ class Searchbar extends Component {
                     </button>
                     <div className="flex mb-8 mt-8">
                         <img src={headimg} className=" w-1/5"/>
-                        <p className="text-[#696F79] pl-2 pt-1 ">yassin@gmail.com</p>
+                        <p className="text-[#696F79] pl-2 pt-2 ">yassin@gmail.com</p>
                     </div>
                 </div>
                     <Navbar/>

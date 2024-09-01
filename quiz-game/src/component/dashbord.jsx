@@ -69,9 +69,9 @@ class Dashbord extends Component {
                     </div>
                     <div className="flex justify-around">
                         <div className="w-1/3 ">
-                            <div className="flex justify-around">
+                            <div className="flex justify-between">
                                 <h1 className="text-[#696F79] font-bold">Achievements</h1>
-                                <div className="w-1/2 h-3 border-2 rounded-xl mt-2 ml-2  ">
+                                <div className="w-1/2 h-3 border-2 rounded-xl mt-2 ml-12  ">
                                     <div className="h-full bg-[#C4C4C4] rounded-xl" style={{width: '70%'}}></div>
                                 </div>
                             </div>

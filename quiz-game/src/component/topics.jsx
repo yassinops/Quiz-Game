@@ -5,8 +5,11 @@ import history from '../assets/hist.jpg';
 import medcin from '../assets/med.jpg';
 import technology from '../assets/tech.jpg';
 import agriculture from '../assets/agri.jpg';
+import {Link} from "react-router-dom";
 
 class Topics extends Component {
+
+
     render() {
         return (
             <div className="flex flex-col">
@@ -20,35 +23,35 @@ class Topics extends Component {
                     <div className=" flex flex-wrap ml-8 " style={{width: '85%'}} >
                         <div className="w-full flex ">
 
-                            <img src={history} className="w-1/4 h-full " alt={""}/>
-                            <p className=" absolute top-[25%] left-[7%] text-white font-bold">History</p>
+                            <img  src={history} className="w-1/4 h-full " alt={""}/>
+                            <Link to="/questions" className=" absolute top-[25%] left-[7%] text-white font-bold">History</Link>
                             <img src={medcin} className="w-1/4 h-full" alt={""}/>
-                            <p className=" absolute top-[25%] left-[28%] text-white font-bold">Medcine</p>
+                            <Link className=" absolute top-[25%] left-[28%] text-white font-bold">Medcine</Link>
                             <img src={history} className="w-1/4 h-full" alt={""}/>
-                            <p className="absolute top-[25%] left-[49%] text-white font-bold">History</p>
+                            <Link className="absolute top-[25%] left-[49%] text-white font-bold">History</Link>
                             <img src={medcin} className="w-1/4 h-full" alt={""}/>
-                            <p className="absolute top-[25%] left-[70%] text-white font-bold">Medcine</p>
+                            <Link className="absolute top-[25%] left-[70%] text-white font-bold">Medcine</Link>
                         </div>
 
                         <div className=" w-full flex ">
                             <img src={technology} className="w-1/4  h-full" alt={""}/>
-                            <p className="absolute top-[52%] left-[7%] text-white font-bold">Technology</p>
+                            <Link className="absolute top-[52%] left-[7%] text-white font-bold">Technology</Link>
                             <img src={agriculture} className="w-1/4  h-full" alt={""}/>
-                            <p className="absolute top-[52%] left-[28%] text-white font-bold">Agriculture</p>
+                            <Link className="absolute top-[52%] left-[28%] text-white font-bold">Agriculture</Link>
                             <img src={technology} className="w-1/4  h-full" alt={""}/>
-                            <p className="absolute top-[52%] left-[49%] text-white font-bold">Technology</p>
+                            <Link className="absolute top-[52%] left-[49%] text-white font-bold">Technology</Link>
                             <img src={agriculture} className="w-1/4  h-full" alt={""}/>
-                            <p className="absolute top-[52%] left-[70%] text-white font-bold">Agriculture</p>
+                            <Link className="absolute top-[52%] left-[70%] text-white font-bold">Agriculture</Link>
                         </div>
                         <div className="flex">
                             <img src={technology} className="w-1/4  h-full" alt={""}/>
-                            <p className="absolute top-[79%] left-[7%] text-white font-bold">Technology</p>
+                            <Link className="absolute top-[79%] left-[7%] text-white font-bold">Technology</Link>
                             <img src={agriculture} className="w-1/4  h-full" alt={""}/>
-                            <p className="absolute top-[79%] left-[28%]  text-white font-bold">Agriculture</p>
+                            <Link className="absolute top-[79%] left-[28%]  text-white font-bold">Agriculture</Link>
                             <img src={technology} className="w-1/4  h-full" alt={""}/>
-                            <p className="absolute top-[79%] left-[49%]  text-white font-bold">Technology</p>
+                            <Link className="absolute top-[79%] left-[49%]  text-white font-bold">Technology</Link>
                             <img src={agriculture} className="w-1/4  h-full" alt={""}/>
-                            <p className="absolute top-[79%] left-[70%]  text-white font-bold">Agriculture</p>
+                            <Link className="absolute top-[79%] left-[70%]  text-white font-bold">Agriculture</Link>
                         </div>
                     </div>
                     <div className=" min-w-full flex justify-end w-1/2  mb-8  ">
