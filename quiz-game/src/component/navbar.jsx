@@ -10,7 +10,7 @@ class Navbar extends Component {
     render() {
         return (
             <div className=" w-1/6  bg-[#FBF9F9] flex flex-col justify-between ">
-                <div className="flex flex-col space-y-2 p-4 ">
+                <div className="flex flex-col space-y-2 p-4  ">
                     <div className="flex bg-[#8692A6] rounded-full p-3 shadow-md">
                         <img src={dashboard}/>
                         <button className="font-bold pl-3">Dashboard</button>

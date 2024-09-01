@@ -8,8 +8,8 @@ class Searchbar extends Component {
 
     render() {
         return (
-            <div className="w-full h-screen ">
-                <div className=" w-full  bg-[#FBF9F9] flex justify-between">
+            <div className="w-full h-screen  ">
+                <div className=" w-full  bg-[#FBF9F9] flex justify-between sticky top-0 z-50 bg-white">
                     <h1 className=" w-1/6 h-full text-center text-[#696F79] text-xl font-bold  pt-4 mb-8 mt-8 ">Quiz
                         Time</h1>
                     <input type={"search"} className=" w-1/5 h-full rounded-full p-3 shadow-md mb-8 mt-8"

@@ -52,18 +52,27 @@ class Historyquestions extends Component {
                             <p className="text-[#696F79]">Answer the question below</p>
                         </div>
                         <div>
-                            <h1 className="text-[#696F79] font-bold text-xl">Timer</h1>
+                            <h1 className="text-[#696F79] font-bold text-xl">Timer hhhhhh</h1>
                         </div>
                     </div>
                     {currentQuestion && (
                         <div>
                             <div className="flex w-full ">
-                                <img src={history} alt={"history"} className="w-1/2"/>
-                                <h2 className="text-[#696F79] pt-10">{currentQuestion.question}</h2>
+                                <img src={history} alt={"history"} style={{width: '30%'}}/>
+                                <div className="pt-5">
+                                    <h1
+                                        className="text-[#696F79] text-xl font-semibold">
+                                        Question {currentIndex + 1}/{questions.length}
+                                    </h1>
+                                    <h2
+                                        className="text-[#696F79] pt-2 min-w-full">
+                                        {currentQuestion.question}
+                                    </h2>
+                                </div>
                             </div>
 
                             <div className=" pl-5">
-                                <h2 className="text-[#696F79] font-bold text-xl pb-2">Choose answer</h2>
+                                <h2 className="text-[#696F79] font-semibold text-xl pb-2">Choose answer</h2>
                                 <ul>
                                     {currentQuestion.incorrect_answers.concat(currentQuestion.correct_answer).map((answer, counter) => (
                                         <li className="text-[#696F79] p-2" key={counter}><input type={"radio"}/>{answer}
