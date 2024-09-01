@@ -24,7 +24,7 @@ class Topics extends Component {
                         <div className="w-full flex ">
 
                             <img  src={history} className="w-1/4 h-full " alt={""}/>
-                            <Link to="/questions" className=" absolute top-[25%] left-[7%] text-white font-bold">History</Link>
+                            <Link to="/histquestions" className=" absolute top-[25%] left-[7%] text-white font-bold">History</Link>
                             <img src={medcin} className="w-1/4 h-full" alt={""}/>
                             <Link className=" absolute top-[25%] left-[28%] text-white font-bold">Medcine</Link>
                             <img src={history} className="w-1/4 h-full" alt={""}/>

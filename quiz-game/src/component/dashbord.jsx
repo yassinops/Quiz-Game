@@ -31,7 +31,7 @@ class Dashbord extends Component {
     render() {
         return (
             <div className="  flex flex-col  ">
-                <Searchbar/>
+                    <Searchbar/>
                 <div
                     className="flex flex-col absolute top-[15%] left-[20%]  rounded-2xl shadow-2xl">
                     <div className="flex">
