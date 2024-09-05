@@ -12,6 +12,7 @@ class Historyquestions extends Component {
             questions: [],
             currentIndex: 0, /*that tracks which question is currently displayed
                             and that will updated when it goes to the next question*/
+            timeLeft:30,
         };
     }
 
@@ -32,10 +33,31 @@ class Historyquestions extends Component {
             .then(res => {
                 this.setState({questions: res.data.results});
             });
+        this.timer=setInterval(()=>{
+            this.setState((prevState)=>({
+                timeLeft:prevState.timeLeft-0.1,
+            }))
+        },1000);
+    }
+    componentDidUpdate() {
+        if (this.state.timeLeft === 0) {
+            clearInterval(this.timer); // Stop the timer when time runs out
+            // You can also handle what happens when the timer reaches 0, like moving to the next question
+        }
     }
 
+    componentWillUnmount() {
+        clearInterval(this.timer); // Clean up the timer when the component unmounts
+    }
+
+    radioHandler=(e)=>{
+        if(e.target.checked){
+            e.target.checked=false;
+        }
+
+    }
     render() {
-        const {questions, currentIndex} = this.state;
+        const {questions, currentIndex,timeLeft} = this.state;
 
         let currentQuestion;
         if (questions.length > 0)
@@ -52,7 +74,7 @@ class Historyquestions extends Component {
                             <p className="text-[#696F79]">Answer the question below</p>
                         </div>
                         <div>
-                            <h1 className="text-[#696F79] font-bold text-xl">Timer hhhhhh</h1>
+                            <h1 className="text-[#696F79] font-bold text-xl">Timer:{timeLeft} Mins</h1>
                         </div>
                     </div>
                     {currentQuestion && (
@@ -75,7 +97,12 @@ class Historyquestions extends Component {
                                 <h2 className="text-[#696F79] font-semibold text-xl pb-2">Choose answer</h2>
                                 <ul>
                                     {currentQuestion.incorrect_answers.concat(currentQuestion.correct_answer).map((answer, counter) => (
-                                        <li className="text-[#696F79] p-2" key={counter}><input type={"radio"}/>{answer}
+                                        <li className="text-[#696F79] p-2"
+                                            key={counter}>
+                                            <input type={"radio"}
+                                                   value={answer}
+                                                  onClick={this.radioHandler}
+                                            />{answer}
                                         </li>
                                     ))}
                                 </ul>
