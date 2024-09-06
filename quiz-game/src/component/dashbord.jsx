@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Searchbar from "./searchbar";
+import Searchbar from "./navbarComponent/searchbar";
 import rectangle from '../assets/Rect.png'
 
 import flag from '../assets/flag.png';
@@ -25,9 +25,6 @@ class Dashbord extends Component {
         this.state = {};
     }
 
-    displayTopics = e => {
-        this.props.navigate('/search');
-    }
     render() {
         return (
             <div className="  flex flex-col  ">
@@ -121,4 +118,4 @@ class Dashbord extends Component {
     }
 }
 
-export default NavigateWrapper(Dashbord);
+export default Dashbord;

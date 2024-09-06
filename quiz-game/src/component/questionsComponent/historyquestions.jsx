@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import axios from "axios";
 
 import history from '../../assets/histQ.jpg';
-import Searchbar from "../searchbar";
+import Searchbar from "../navbarComponent/searchbar";
 
 class Historyquestions extends Component {
 
@@ -74,7 +74,7 @@ class Historyquestions extends Component {
                             <p className="text-[#696F79]">Answer the question below</p>
                         </div>
                         <div>
-                            <h1 className="text-[#696F79] font-bold text-xl">Timer:{timeLeft} Mins</h1>
+                            <h1 className="text-[#696F79] font-bold text-xl pr-2">Timer:{timeLeft} Mins</h1>
                         </div>
                     </div>
                     {currentQuestion && (
@@ -101,7 +101,7 @@ class Historyquestions extends Component {
                                             key={counter}>
                                             <input type={"radio"}
                                                    value={answer}
-                                                  onClick={this.radioHandler}
+
                                             />{answer}
                                         </li>
                                     ))}

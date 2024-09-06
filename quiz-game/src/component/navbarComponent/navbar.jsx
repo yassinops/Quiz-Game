@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import dashboard from "../assets/dash.png";
-import support from "../assets/supp.png";
-import notification from "../assets/not.png";
-import logout from "../assets/logout.png";
+import dashboard from "../../assets/dash.png";
+import support from "../../assets/supp.png";
+import notification from "../../assets/not.png";
+import logout from "../../assets/logout.png";
 
 
 class Navbar extends Component {

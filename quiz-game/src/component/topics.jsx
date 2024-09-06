@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Searchbar from "./searchbar";
+import Searchbar from "./navbarComponent/searchbar";
 
 import history from '../assets/hist.jpg';
 import medcin from '../assets/med.jpg';
@@ -24,7 +24,7 @@ class Topics extends Component {
                         <div className="w-full flex ">
 
                             <img  src={history} className="w-1/4 h-full " alt={""}/>
-                            <Link to="/histquestions" className=" absolute top-[25%] left-[7%] text-white font-bold">History</Link>
+                            <Link to="/instruction" className=" absolute top-[25%] left-[7%] text-white font-bold">History</Link>
                             <img src={medcin} className="w-1/4 h-full" alt={""}/>
                             <Link className=" absolute top-[25%] left-[28%] text-white font-bold">Medcine</Link>
                             <img src={history} className="w-1/4 h-full" alt={""}/>
