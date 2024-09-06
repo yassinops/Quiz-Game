@@ -10,11 +10,10 @@ import back from '../assets/Badge.png';
 import win from '../assets/win.png';
 import luck from '../assets/luck.png';
 
-import history from '../assets/hist.jpg';
-import medcin from '../assets/med.jpg';
-import technology from '../assets/tech.jpg';
-import agriculture from '../assets/agri.jpg';
-import NavigateWrapper from "./navigatewrapper";
+import history from '../assets/hist.png';
+import medcin from '../assets/med.png';
+import technology from '../assets/tech.png';
+import agriculture from '../assets/agri.png';
 import {Link} from "react-router-dom";
 
 class Dashbord extends Component {

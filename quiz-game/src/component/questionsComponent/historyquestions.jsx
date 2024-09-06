@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import axios from "axios";
 
-import history from '../../assets/histQ.jpg';
+import history from '../../assets/histQ.png';
 import Searchbar from "../navbarComponent/searchbar";
-
+import Popup from "../popupComponent/popup";
 class Historyquestions extends Component {
 
     constructor(props) {
@@ -22,6 +22,7 @@ class Historyquestions extends Component {
         }));
     }
 
+    //not used function
     handlePrevious = () => {
         this.setState((prevState) => ({
             currentIndex: Math.max(prevState.currentIndex - 1, 0)
@@ -50,12 +51,6 @@ class Historyquestions extends Component {
         clearInterval(this.timer); // Clean up the timer when the component unmounts
     }
 
-    radioHandler=(e)=>{
-        if(e.target.checked){
-            e.target.checked=false;
-        }
-
-    }
     render() {
         const {questions, currentIndex,timeLeft} = this.state;
 
@@ -63,11 +58,10 @@ class Historyquestions extends Component {
         if (questions.length > 0)
             currentQuestion = questions[currentIndex];
 
-
         return (
             <div>
                 <Searchbar/>
-                <div className="w-auto absolute top-[15%] left-[20%] rounded-2xl shadow-md p-2">
+                <div className=" absolute top-[15%] left-[20%] rounded-2xl shadow-2xl p-2" style={{width:'70%', height:'80%'}}>
                     <div className="flex w-full justify-between pl-8 pt-4 ">
                         <div>
                             <h1 className="text-[#696F79] font-bold text-xl">{currentQuestion ? currentQuestion.category : 'loading..'} Quiz</h1>
@@ -109,6 +103,9 @@ class Historyquestions extends Component {
                             </div>
                         </div>
                     )}
+                    <div className="absolute top-0 left-[35%]">
+                        {currentIndex === 4 && <Popup/>}
+                    </div>
                     <div className="flex justify-end" onClick={this.handleNext}>
                         <button className="text-white bg-[#8692A6] w-1/6  p-2 rounded-2xl">next</button>
                     </div>

@@ -1,10 +1,10 @@
 import React, {Component} from "react";
 import Searchbar from "./navbarComponent/searchbar";
 
-import history from '../assets/hist.jpg';
-import medcin from '../assets/med.jpg';
-import technology from '../assets/tech.jpg';
-import agriculture from '../assets/agri.jpg';
+import history from '../assets/hist.png';
+import medcin from '../assets/med.png';
+import technology from '../assets/tech.png';
+import agriculture from '../assets/agri.png';
 import {Link} from "react-router-dom";
 
 class Topics extends Component {
@@ -12,10 +12,10 @@ class Topics extends Component {
 
     render() {
         return (
-            <div className="flex flex-col">
+            <div>
                 <Searchbar/>
                 <div
-                    className="absolute top-[15%] left-[20%]  rounded-3xl shadow-2xl" style={{width: '75%'}}>
+                    className="absolute top-[16%] left-[20%]  rounded-3xl shadow-2xl" style={{width: '70%'}}>
                     <div className="pl-12 pt-4">
                         <h1 className=" text-xl font-bold text-[#696F79]">Select Topics</h1>
                         <p className="text-[#696F79]">Featured Category</p>

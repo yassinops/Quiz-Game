@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import Searchbar from "./navbarComponent/searchbar";
 
-import history from '../assets/Recthist.jpg'
+import history from '../assets/Recthist.png'
 import navigatewrapper from "./navigatewrapper";
 
 
@@ -18,7 +18,7 @@ class Instruction extends Component {
         return (
             <div>
                 <Searchbar/>
-                <div className=" absolute top-[16%] left-[20%] rounded-2xl shadow-md" style={{width:'70%'}}>
+                <div className=" absolute top-[16%] left-[20%] rounded-2xl shadow-2xl" style={{width:'70%',height:'80%'}}>
                     <div className="ml-8">
                         <h1 className="text-xl font-bold text-[#696F79]">History Quiz</h1>
                         <p className="text-[#696F79]">Read the following instructions</p>

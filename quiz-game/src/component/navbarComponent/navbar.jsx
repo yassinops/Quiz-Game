@@ -3,9 +3,17 @@ import dashboard from "../../assets/dash.png";
 import support from "../../assets/supp.png";
 import notification from "../../assets/not.png";
 import logout from "../../assets/logout.png";
+import navigatewrapper from "../navigatewrapper";
 
 
 class Navbar extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    handlelogOut=()=>{
+        this.props.navigate('/login')
+    }
 
     render() {
         return (
@@ -27,7 +35,7 @@ class Navbar extends Component {
                 <div className="w-full flex flex-col mt-80 p-4 ">
                     <div className="flex rounded-full p-3 shadow-md bg-white">
                         <img src={logout}/>
-                        <button className="text-[#696F79] font-bold pl-3">Log Out</button>
+                        <button className="text-[#696F79] font-bold pl-3" onClick={this.handlelogOut}>Log Out</button>
                     </div>
                 </div>
             </div>
@@ -36,4 +44,4 @@ class Navbar extends Component {
     };
 }
 
-export default Navbar;
+export default navigatewrapper (Navbar);
