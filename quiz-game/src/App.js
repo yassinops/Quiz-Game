@@ -9,6 +9,9 @@ import Historyquestions from "./component/questionsComponent/historyquestions";
 import Medcinequestions from "./component/questionsComponent/medcinequestions";
 import Instruction from "./component/instruction";
 import Popup from "./component/popupComponent/popup";
+import Correct from "./component/answers/correct";
+import Incorrect from "./component/answers/incorrect";
+import Secpopup from "./component/popupComponent/secpopup";
 
 function App() {
     return (
@@ -21,6 +24,9 @@ function App() {
             <Route path="/search" element={<Searchbar/>}/>
             <Route path="/navbar" element={<Navbar/>}/>
             <Route path="/popup" element={<Popup/>}/>
+            <Route path="/secpopup" element={<Secpopup/>}/>
+            <Route path="/correct" element={<Correct/>}/>
+            <Route path="/incorrect" element={<Incorrect/>}/>
             <Route path="/histquestions" element={<Historyquestions/>}/>
             <Route path="/medtquestions" element={<Medcinequestions/>}/>
 

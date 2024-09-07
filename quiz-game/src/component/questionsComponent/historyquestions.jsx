@@ -4,6 +4,8 @@ import axios from "axios";
 import history from '../../assets/histQ.png';
 import Searchbar from "../navbarComponent/searchbar";
 import Popup from "../popupComponent/popup";
+import Correct from "../answers/correct";
+
 class Historyquestions extends Component {
 
     constructor(props) {
@@ -11,21 +13,39 @@ class Historyquestions extends Component {
         this.state = {
             questions: [],
             currentIndex: 0, /*that tracks which question is currently displayed
-                            and that will updated when it goes to the next question*/
-            timeLeft:30,
+                            and that will be updated when it goes to the next question*/
+            timeLeft: 30,
+            selectedAnswer: '',
+            previousAnswer: [],// here where we're going to stock the selected answers
         };
+    }
+
+    handleAnswer=(answer)=>{
+        this.setState((prevState)=>{
+            const updateAnswer=[...prevState.previousAnswer];
+            updateAnswer[prevState.currentIndex]= answer ;
+
+            return{
+                selectedAnswer: answer,
+                previousAnswer: updateAnswer,
+            }
+        })
     }
 
     handleNext = () => {
         this.setState((prevState) => ({
-            currentIndex: Math.min(prevState.currentIndex + 1, prevState.questions.length - 1)
+            currentIndex: Math.min(prevState.currentIndex + 1, prevState.questions.length - 1),
+            selectedAnswer: '',
         }));
     }
+    handleOnChange = (event) => {
+        this.setState({selectedAnswer: event.target.value});
+    }
 
-    //not used function
     handlePrevious = () => {
         this.setState((prevState) => ({
-            currentIndex: Math.max(prevState.currentIndex - 1, 0)
+            currentIndex: Math.max(prevState.currentIndex - 1, 0),
+            selectedAnswer: prevState.previousAnswer[Math.max(prevState.currentIndex -1,0)] ||null
         }))
     }
 
@@ -34,12 +54,13 @@ class Historyquestions extends Component {
             .then(res => {
                 this.setState({questions: res.data.results});
             });
-        this.timer=setInterval(()=>{
-            this.setState((prevState)=>({
-                timeLeft:prevState.timeLeft-0.1,
+        this.timer = setInterval(() => {
+            this.setState((prevState) => ({
+                timeLeft: prevState.timeLeft - 0.1,
             }))
-        },1000);
+        }, 1000);
     }
+
     componentDidUpdate() {
         if (this.state.timeLeft === 0) {
             clearInterval(this.timer); // Stop the timer when time runs out
@@ -52,7 +73,7 @@ class Historyquestions extends Component {
     }
 
     render() {
-        const {questions, currentIndex,timeLeft} = this.state;
+        const {questions, currentIndex, timeLeft, selectedAnswer, previousAnswer} = this.state;
 
         let currentQuestion;
         if (questions.length > 0)
@@ -61,7 +82,8 @@ class Historyquestions extends Component {
         return (
             <div>
                 <Searchbar/>
-                <div className=" absolute top-[15%] left-[20%] rounded-2xl shadow-2xl p-2" style={{width:'70%', height:'80%'}}>
+                <div className=" absolute top-[15%] left-[20%] rounded-2xl shadow-2xl p-2"
+                     style={{width: '70%', height: '80%'}}>
                     <div className="flex w-full justify-between pl-8 pt-4 ">
                         <div>
                             <h1 className="text-[#696F79] font-bold text-xl">{currentQuestion ? currentQuestion.category : 'loading..'} Quiz</h1>
@@ -95,11 +117,18 @@ class Historyquestions extends Component {
                                             key={counter}>
                                             <input type={"radio"}
                                                    value={answer}
-
+                                                   name={`question-${this.state.currentIndex}`}
+                                                   checked={selectedAnswer === answer}
+                                                   onChange={()=>this.handleAnswer(answer)}
                                             />{answer}
+                                            <div>
+                                                {currentQuestion.correcr_answer === answer && <Correct/>}
+                                            </div>
                                         </li>
                                     ))}
                                 </ul>
+                                <div>
+                                </div>
                             </div>
                         </div>
                     )}
@@ -108,6 +137,9 @@ class Historyquestions extends Component {
                     </div>
                     <div className="flex justify-end" onClick={this.handleNext}>
                         <button className="text-white bg-[#8692A6] w-1/6  p-2 rounded-2xl">next</button>
+                    </div>
+                    <div className="flex justify-end pt-5" onClick={this.handlePrevious}>
+                        <button className="text-white bg-[#8692A6] w-1/6  p-2 rounded-2xl">previous</button>
                     </div>
                 </div>
 
