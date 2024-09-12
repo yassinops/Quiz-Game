@@ -3,8 +3,10 @@ import axios from "axios";
 
 import history from '../../assets/histQ.png';
 import Searchbar from "../navbarComponent/searchbar";
-import Popup from "../popupComponent/popup";
 import Correct from "../answers/correct";
+import Popup from "../popupComponent/popup";
+import Secpopup from "../popupComponent/secpopup";
+import Incorrect from "../answers/incorrect";
 
 class Historyquestions extends Component {
 
@@ -16,16 +18,17 @@ class Historyquestions extends Component {
                             and that will be updated when it goes to the next question*/
             timeLeft: 30,
             selectedAnswer: '',
+            isReviewing: false,
             previousAnswer: [],// here where we're going to stock the selected answers
         };
     }
 
-    handleAnswer=(answer)=>{
-        this.setState((prevState)=>{
-            const updateAnswer=[...prevState.previousAnswer];
-            updateAnswer[prevState.currentIndex]= answer ;
+    handleAnswer = (answer) => {
+        this.setState((prevState) => {
+            const updateAnswer = [...prevState.previousAnswer];
+            updateAnswer[prevState.currentIndex] = answer;
 
-            return{
+            return {
                 selectedAnswer: answer,
                 previousAnswer: updateAnswer,
             }
@@ -34,26 +37,25 @@ class Historyquestions extends Component {
 
     handleNext = () => {
         this.setState((prevState) => ({
-            currentIndex: Math.min(prevState.currentIndex + 1, prevState.questions.length - 1),
-            selectedAnswer: '',
+            currentIndex: Math.min(prevState.currentIndex + 1, prevState.questions.length),
+            selectedAnswer: prevState.previousAnswer[prevState.currentIndex + 1] || '',
         }));
     }
-    handleOnChange = (event) => {
-        this.setState({selectedAnswer: event.target.value});
-    }
-
     handlePrevious = () => {
         this.setState((prevState) => ({
-            currentIndex: Math.max(prevState.currentIndex - 1, 0),
-            selectedAnswer: prevState.previousAnswer[Math.max(prevState.currentIndex -1,0)] ||null
+            currentIndex: Math.max(prevState.currentIndex - 5, 0),
+            selectedAnswer: prevState.previousAnswer[Math.max(prevState.currentIndex - 5, 0)] || null,
+            isReviewing: true
         }))
     }
 
     componentDidMount() {
+        //retrieving data from the url
         axios.get('https://opentdb.com/api.php?amount=5&category=23&difficulty=medium')
             .then(res => {
                 this.setState({questions: res.data.results});
             });
+        //setting time
         this.timer = setInterval(() => {
             this.setState((prevState) => ({
                 timeLeft: prevState.timeLeft - 0.1,
@@ -73,7 +75,8 @@ class Historyquestions extends Component {
     }
 
     render() {
-        const {questions, currentIndex, timeLeft, selectedAnswer, previousAnswer} = this.state;
+        const {questions, currentIndex, timeLeft, selectedAnswer, previousAnswer, isReviewing} = this.state;
+
 
         let currentQuestion;
         if (questions.length > 0)
@@ -115,34 +118,47 @@ class Historyquestions extends Component {
                                     {currentQuestion.incorrect_answers.concat(currentQuestion.correct_answer).map((answer, counter) => (
                                         <li className="text-[#696F79] p-2"
                                             key={counter}>
-                                            <input type={"radio"}
-                                                   value={answer}
-                                                   name={`question-${this.state.currentIndex}`}
-                                                   checked={selectedAnswer === answer}
-                                                   onChange={()=>this.handleAnswer(answer)}
-                                            />{answer}
-                                            <div>
-                                                {currentQuestion.correcr_answer === answer && <Correct/>}
+                                            <div className="flex ">
+                                                <input type={"radio"}
+                                                       value={answer}
+                                                       name={`question-${this.state.currentIndex}`}
+                                                       checked={previousAnswer[currentIndex] === answer}
+                                                       onChange={() => this.handleAnswer(answer)}
+                                                />{answer}
+                                                <div className="pl-4 ">
+                                                    {isReviewing && previousAnswer[currentIndex]===answer && (
+                                                        /*console.log("Selected Answer: ", selectedAnswer),
+                                                        console.log("Correct Answer: ", currentQuestion.correct_answer),
+                                                         console.log('previousAnswer',previousAnswer),*/
+                                                        previousAnswer[currentIndex] === currentQuestion.correct_answer ?
+                                                            <Correct/> :
+                                                            <Incorrect/>
+                                                    )}
+                                                </div>
+
                                             </div>
+
                                         </li>
                                     ))}
                                 </ul>
-                                <div>
-                                </div>
                             </div>
                         </div>
                     )}
+                    {currentIndex === 5 && (
+                        <Secpopup ToPopup={this.handlePrevious}/>
+                    )}
+                    {/*   {currentIndex === 5 && (
+                                <Popup />
+                    )}*/}
                     <div className="absolute top-0 left-[35%]">
-                        {currentIndex === 4 && <Popup/>}
                     </div>
                     <div className="flex justify-end" onClick={this.handleNext}>
                         <button className="text-white bg-[#8692A6] w-1/6  p-2 rounded-2xl">next</button>
                     </div>
-                    <div className="flex justify-end pt-5" onClick={this.handlePrevious}>
+                    {/*<div className="flex justify-end pt-5" onClick={this.handlePrevious}>
                         <button className="text-white bg-[#8692A6] w-1/6  p-2 rounded-2xl">previous</button>
-                    </div>
+                    </div>*/}
                 </div>
-
             </div>
         );
     }
