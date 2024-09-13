@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 
 import intr from '../../assets/Success Icon.png';
-import {Link} from "react-router-dom";
 
 class Popup extends Component {
 
@@ -13,8 +12,8 @@ class Popup extends Component {
                     <img src={intr} className="relative  left-[10%]"/>
                     <p>Are you sure you want to <p className="text-center">submit Quiz?</p></p>
                     <div className="flex justify-between pt-10">
-                        <Link className="font-bold">No</Link>
-                        <Link className="font-bold">Yes</Link>
+                        <button className="font-bold" onClick={this.props.onReload}>No</button>
+                        <button className="font-bold" onClick={this.props.onReview}>Yes</button>
                     </div>
                 </div>
             </div>

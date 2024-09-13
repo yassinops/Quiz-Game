@@ -20,6 +20,9 @@ class Historyquestions extends Component {
             selectedAnswer: '',
             isReviewing: false,
             previousAnswer: [],// here where we're going to stock the selected answers
+
+            confirm: true,
+            review: false,
         };
     }
 
@@ -39,13 +42,15 @@ class Historyquestions extends Component {
         this.setState((prevState) => ({
             currentIndex: Math.min(prevState.currentIndex + 1, prevState.questions.length),
             selectedAnswer: prevState.previousAnswer[prevState.currentIndex + 1] || '',
+            review: false,
         }));
     }
     handlePrevious = () => {
         this.setState((prevState) => ({
             currentIndex: Math.max(prevState.currentIndex - 5, 0),
             selectedAnswer: prevState.previousAnswer[Math.max(prevState.currentIndex - 5, 0)] || null,
-            isReviewing: true
+            isReviewing: true,
+            review: false,
         }))
     }
 
@@ -72,6 +77,16 @@ class Historyquestions extends Component {
 
     componentWillUnmount() {
         clearInterval(this.timer); // Clean up the timer when the component unmounts
+    }
+
+    handleReload = () => {
+        window.location.reload();
+    }
+    handleReview = () => {
+        this.setState({
+            confirm: false,
+            review: true,
+        })
     }
 
     render() {
@@ -126,10 +141,7 @@ class Historyquestions extends Component {
                                                        onChange={() => this.handleAnswer(answer)}
                                                 />{answer}
                                                 <div className="pl-4 ">
-                                                    {isReviewing && previousAnswer[currentIndex]===answer && (
-                                                        /*console.log("Selected Answer: ", selectedAnswer),
-                                                        console.log("Correct Answer: ", currentQuestion.correct_answer),
-                                                         console.log('previousAnswer',previousAnswer),*/
+                                                    {isReviewing && previousAnswer[currentIndex] === answer && (
                                                         previousAnswer[currentIndex] === currentQuestion.correct_answer ?
                                                             <Correct/> :
                                                             <Incorrect/>
@@ -144,20 +156,17 @@ class Historyquestions extends Component {
                             </div>
                         </div>
                     )}
-                    {currentIndex === 5 && (
+                    {this.state.review && (
                         <Secpopup ToPopup={this.handlePrevious}/>
                     )}
-                    {/*   {currentIndex === 5 && (
-                                <Popup />
-                    )}*/}
+                    {currentIndex === 5 && this.state.confirm && (
+                        <Popup onReload={() => this.handleReload()} onReview={() => this.handleReview()}/>
+                    )}
                     <div className="absolute top-0 left-[35%]">
                     </div>
                     <div className="flex justify-end" onClick={this.handleNext}>
                         <button className="text-white bg-[#8692A6] w-1/6  p-2 rounded-2xl">next</button>
                     </div>
-                    {/*<div className="flex justify-end pt-5" onClick={this.handlePrevious}>
-                        <button className="text-white bg-[#8692A6] w-1/6  p-2 rounded-2xl">previous</button>
-                    </div>*/}
                 </div>
             </div>
         );
