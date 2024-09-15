@@ -44,6 +44,7 @@ class Historyquestions extends Component {
             selectedAnswer: prevState.previousAnswer[prevState.currentIndex + 1] || '',
             review: false,
         }));
+
     }
     handlePrevious = () => {
         this.setState((prevState) => ({
@@ -90,7 +91,7 @@ class Historyquestions extends Component {
     }
 
     render() {
-        const {questions, currentIndex, timeLeft, selectedAnswer, previousAnswer, isReviewing} = this.state;
+        const {questions, currentIndex, timeLeft, previousAnswer, isReviewing} = this.state;
 
 
         let currentQuestion;
